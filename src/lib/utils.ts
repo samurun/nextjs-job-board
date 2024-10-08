@@ -22,8 +22,9 @@ export function relativeDate(form: Date): string {
 export function toSlug(str: string): string {
   return str
     .toLowerCase()
-    .replace(/ /g, '-')
-    .replace(/[^\w-]+/g, '');
+    .trim() // Trim leading and trailing spaces
+    .replace(/\s+/g, '-') // Replace multiple spaces with a single hyphen
+    .replace(/[^\w-]+/g, ''); // Remove all non-alphanumeric characters except hyphens
 }
 
 export function isAdmin(user: UserResource | User) {
